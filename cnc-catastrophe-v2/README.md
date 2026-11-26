@@ -25,8 +25,14 @@ Resolution calculation: 200 x 16 / 8 = 400 steps/mm. This assumes identical moto
 - tools/svg_to_gcode.py - SVG path converter
 - tools/cnc_sender.py - stop-and-wait serial sender
 - examples/test_square.svg - example drawing
+- docs/ARCHITECTURE.md - system architecture and data flow
 - docs/HARDWARE.md - wiring and safety notes
+- docs/CALIBRATION.md - commissioning and calibration procedure
 - docs/PROTOCOL.md - supported serial commands
+- docs/VALIDATION.md - software, firmware and hardware test plan
+- docs/TROUBLESHOOTING.md - common faults and recovery
+- docs/PROJECT_WALKTHROUGH.md - technical explanation and interview preparation
+- tests/test_svg_to_gcode.py - converter regression tests
 
 ## Setup
 
@@ -37,6 +43,23 @@ Resolution calculation: 200 x 16 / 8 = 400 steps/mm. This assumes identical moto
 5. Send on Windows: python tools/cnc_sender.py --port COM5 --file square.gcode
 
 The sender waits for the ready banner, homes the machine, then sends one command at a time and waits for an acknowledgement.
+
+## Development checks
+
+From this directory, run:
+
+~~~bash
+python -m pip install -r requirements.txt
+python -m pip install pytest
+python -m py_compile tools/cnc_sender.py tools/svg_to_gcode.py
+python -m pytest -q
+~~~
+
+GitHub Actions also checks the Python tools/tests and compiles the sketch for Arduino Uno. A passing CI build does not replace physical commissioning.
+
+## Documentation
+
+See the [architecture](docs/ARCHITECTURE.md), [hardware](docs/HARDWARE.md), [calibration](docs/CALIBRATION.md), [protocol](docs/PROTOCOL.md), [validation](docs/VALIDATION.md), [troubleshooting](docs/TROUBLESHOOTING.md) and [project walkthrough](docs/PROJECT_WALKTHROUGH.md).
 
 ## Supported commands
 
