@@ -1,0 +1,26 @@
+name: Arduino firmware build
+
+on:
+  push:
+    paths:
+      - "cnc-catastrophe-v2/firmware/**"
+      - ".github/workflows/arduino-build.yml"
+  pull_request:
+    paths:
+      - "cnc-catastrophe-v2/firmware/**"
+      - ".github/workflows/arduino-build.yml"
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v2
+      - name: Install Uno platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+      - name: Install AccelStepper
+        run: arduino-cli lib install AccelStepper
+      - name: Compile sketch
+        run: arduino-cli compile --fqbn arduino:avr:uno cnc-catastrophe-v2/firmware/CNC_Catastrophe
