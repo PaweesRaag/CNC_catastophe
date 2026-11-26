@@ -70,3 +70,15 @@ def test_margin_must_leave_usable_workspace(tmp_path: Path) -> None:
     source = write_svg(tmp_path, '<path d="M0 0 L10 10"/>')
     with pytest.raises(ValueError, match="Margin leaves no usable workspace"):
         convert(source, tmp_path / "invalid.gcode", 10, 10, 5, 1, 60)
+
+
+def test_feed_outside_firmware_limits_is_rejected(tmp_path: Path) -> None:
+    source = write_svg(tmp_path, '<path d="M0 0 L10 10"/>')
+    with pytest.raises(ValueError, match="Feed must be between 10 and 300"):
+        convert(source, tmp_path / "invalid.gcode", 150, 150, 5, 1, 301)
+
+
+def test_zero_length_only_svg_is_rejected(tmp_path: Path) -> None:
+    source = write_svg(tmp_path, '<path d="M10 10"/>')
+    with pytest.raises(ValueError, match="no drawable"):
+        convert(source, tmp_path / "empty.gcode", 150, 150, 5, 1, 60)
