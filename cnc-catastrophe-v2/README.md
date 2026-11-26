@@ -2,7 +2,7 @@
 
 Two-axis lead-screw pen-plotter prototype for Arduino Uno, two NEMA 17 motors, two DRV8825 drivers, normally-closed home switches and a pen-lift servo.
 
-> Development snapshot only. Firmware has not been compiled with the Arduino toolchain or tested on the physical machine. Do not treat motion, travel, current or safety behaviour as validated.
+> Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes five Python converter tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
 
 ## Configured machine
 
@@ -87,7 +87,8 @@ This is not a full RS-274 interpreter. Arcs, relative positioning, offsets, tool
 
 ## Verification checklist
 
-- [ ] Compile with Arduino IDE / arduino-cli and record versions.
+- [x] Compile for Arduino Uno in GitHub Actions.
+- [ ] Compile locally with Arduino IDE / arduino-cli if using a separate local toolchain.
 - [ ] Verify driver current limits, motor supply and common ground.
 - [ ] Verify NC switch polarity and travel direction.
 - [ ] Verify a hardware E-stop physically removes drive power.
