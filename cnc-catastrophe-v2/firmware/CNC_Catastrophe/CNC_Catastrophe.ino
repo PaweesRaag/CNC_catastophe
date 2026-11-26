@@ -36,7 +36,8 @@ constexpr float MAX_AXIS_SPEED_STEPS_S = 2000.0f;
 constexpr float HOME_FAST_STEPS_S = 400.0f;
 constexpr float HOME_SLOW_STEPS_S = 100.0f;
 constexpr float HOME_BACKOFF_MM = 5.0f;
-constexpr float HOME_SEARCH_LIMIT_MM = 170.0f;
+constexpr float HOME_SEARCH_LIMIT_MM = 155.0f;
+constexpr float HOME_RELEASE_LIMIT_MM = 10.0f;
 constexpr unsigned long HOME_TIMEOUT_MS = 200000UL;
 constexpr unsigned long MOVE_TIMEOUT_EXTRA_MS = 15000UL;
 
@@ -120,9 +121,11 @@ bool homeOneAxis(AccelStepper &axis, uint8_t pin, long backoffSteps,
   Serial.println(axisName);
   const long searchLimit = (long)(HOME_SEARCH_LIMIT_MM * stepsPerMm);
 
-  // If already triggered/open, move away until the NC circuit closes.
+  // If already triggered/open, move away only a short, bounded distance.
+  // A broken NC wire is also seen as HIGH and must fail safely.
   if (digitalRead(pin) == SWITCH_TRIGGERED_LEVEL) {
-    if (!waitForSwitch(axis, pin, false, HOME_FAST_STEPS_S, searchLimit)) return false;
+    const long releaseLimit = (long)(HOME_RELEASE_LIMIT_MM * stepsPerMm);
+    if (!waitForSwitch(axis, pin, false, HOME_FAST_STEPS_S, releaseLimit)) return false;
   }
 
   // Fast seek toward the negative-end switch.
@@ -145,6 +148,10 @@ bool homeOneAxis(AccelStepper &axis, uint8_t pin, long backoffSteps,
 void homeMachine() {
   if (alarmActive) {
     printError(F("clear alarm with $X after checking the cause"));
+    return;
+  }
+  if (estopTriggered()) {
+    enterAlarm(F("E-stop circuit open"));
     return;
   }
   raisePen();
