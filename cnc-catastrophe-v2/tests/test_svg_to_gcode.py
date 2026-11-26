@@ -53,7 +53,7 @@ def test_oversized_artwork_is_scaled_into_workspace(tmp_path: Path) -> None:
 
 
 def test_svg_without_paths_is_rejected(tmp_path: Path) -> None:
-    source = write_svg(tmp_path, "<circle cx='25' cy='25' r='10'/>")
+    source = write_svg(tmp_path, "<text x='2' y='20'>Hello</text>")
     with pytest.raises(ValueError, match="No SVG paths"):
         convert(source, tmp_path / "empty.gcode", 150, 150, 5, 1, 60)
 
