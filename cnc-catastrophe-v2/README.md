@@ -5,7 +5,7 @@
 
 Two-axis lead-screw pen-plotter prototype for Arduino Uno, two NEMA 17 motors, two DRV8825 drivers, normally-closed home switches and a pen-lift servo.
 
-> Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes eight Python tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
+> Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes ten Python tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
 
 ## Configured machine
 
