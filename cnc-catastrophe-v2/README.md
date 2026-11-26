@@ -1,5 +1,8 @@
 # CNC Catastrophe
 
+[![Python checks](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml?query=branch%3Acnc-catastrophe-v2) [![Arduino build](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml?query=branch%3Acnc-catastrophe-v2)
+
+
 Two-axis lead-screw pen-plotter prototype for Arduino Uno, two NEMA 17 motors, two DRV8825 drivers, normally-closed home switches and a pen-lift servo.
 
 > Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes five Python converter tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
