@@ -4,7 +4,7 @@
 
 The active v2 implementation is in [cnc-catastrophe-v2](cnc-catastrophe-v2/README.md). The original prototype is preserved.
 
-> Status: implementation and documentation baseline. Firmware compilation and physical machine tests still need to be performed and recorded before claiming measured hardware validation.
+> Status: implementation and documentation baseline. GitHub Actions passes the Arduino Uno firmware compile and five Python converter tests. Physical machine commissioning and drawing tests remain outstanding.
 
 ## Start here
 - [Project setup and overview](cnc-catastrophe-v2/README.md)
