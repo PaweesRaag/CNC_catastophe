@@ -1,6 +1,6 @@
 # CNC Catastrophe
 
-[![Python checks](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml?query=branch%3Acnc-catastrophe-v2) [![Arduino build](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml?query=branch%3Acnc-catastrophe-v2)
+[![Python checks](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml/badge.svg?branch=main)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml?query=branch%3Amain) [![Arduino build](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml/badge.svg?branch=main)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml?query=branch%3Amain)
 
 
 **A two-axis Arduino-based CNC pen plotter** using NEMA 17 stepper motors, DRV8825 drivers, lead screws and a servo-operated pen lift.
