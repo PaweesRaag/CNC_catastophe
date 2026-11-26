@@ -5,6 +5,7 @@ The tests below define what must be checked before calling the machine physicall
 ## Host-side checks
 - Python syntax check for both tools.
 - Convert the supplied square and verify G21/G90, pen-up travel, pen-down paths and final pen-up.
+- Reject feeds outside 10–300 mm/min and SVGs with no non-zero-length drawable geometry.
 - Reject empty SVGs and invalid viewBoxes.
 - Reject non-positive workspace, sample distance and feed values.
 - Confirm oversized artwork is scaled to fit.
@@ -31,6 +32,7 @@ python -m pytest -q
 - Confirm supported commands return ok and unsupported commands return errors.
 - Confirm sender waits for each acknowledgement.
 - Confirm sender detects controller errors and timeouts.
+- Confirm M3/M5 acknowledgements follow the configured servo settling interval.
 
 ## Hardware checks
 - Verify NC switch polarity and open-wire detection.

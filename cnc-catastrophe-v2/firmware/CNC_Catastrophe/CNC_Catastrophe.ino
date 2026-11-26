@@ -43,6 +43,7 @@ constexpr unsigned long MOVE_TIMEOUT_EXTRA_MS = 15000UL;
 
 constexpr uint8_t PEN_UP_ANGLE = 90;
 constexpr uint8_t PEN_DOWN_ANGLE = 0;
+constexpr unsigned long PEN_SETTLE_MS = 350UL; // Tune for the installed servo/linkage
 constexpr uint8_t SERIAL_BUFFER_SIZE = 96;
 
 AccelStepper xAxis(AccelStepper::DRIVER, X_STEP_PIN, X_DIR_PIN);
@@ -155,6 +156,7 @@ void homeMachine() {
     return;
   }
   raisePen();
+  delay(PEN_SETTLE_MS);
   driversEnable(true);
   machineHomed = false;
 
@@ -284,11 +286,13 @@ void processCommand(char *line) {
   if (strcmp(line, "M3") == 0) {
     if (alarmActive) { printError(F("alarm active")); return; }
     lowerPen();
+    delay(PEN_SETTLE_MS);
     Serial.println(F("ok"));
     return;
   }
   if (strcmp(line, "M5") == 0) {
     raisePen();
+    delay(PEN_SETTLE_MS);
     Serial.println(F("ok"));
     return;
   }

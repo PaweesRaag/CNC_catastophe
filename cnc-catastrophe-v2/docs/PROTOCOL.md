@@ -20,3 +20,5 @@
 | G90 | No-op; positioning is always absolute |
 
 Semicolon comments are ignored by the Python sender. Only absolute XY moves are supported.
+
+The firmware waits `PEN_SETTLE_MS` (350 ms by default) after M3/M5 before acknowledging, so the sender does not begin the next move immediately after a servo command. Tune this delay for the installed servo and linkage. Emergency alarm handling does not wait for this delay before disabling the motor drivers.
