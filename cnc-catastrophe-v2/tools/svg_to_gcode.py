@@ -58,8 +58,10 @@ def convert(input_svg: Path, output_gcode: Path, workspace_x: float,
         raise ValueError("SVG physical dimensions must be positive")
     if workspace_x <= 2 * margin or workspace_y <= 2 * margin:
         raise ValueError("Margin leaves no usable workspace")
-    if sample_mm <= 0 or feed <= 0:
-        raise ValueError("Sample distance and feed must be positive")
+    if sample_mm <= 0:
+        raise ValueError("Sample distance must be positive")
+    if feed < 10 or feed > 300:
+        raise ValueError("Feed must be between 10 and 300 mm/min to match firmware limits")
 
     paths, _, _ = svg2paths2(str(input_svg))
     if not paths:
@@ -110,6 +112,9 @@ def convert(input_svg: Path, output_gcode: Path, workspace_x: float,
             lines.append(f"G1 X{x:.3f} Y{y:.3f} F{feed:.1f}")
             segment_total += 1
         lines.append("M5")
+
+    if segment_total == 0:
+        raise ValueError("SVG contains no drawable, non-zero-length path geometry.")
 
     lines.append("; End of job")
     output_gcode.write_text("\n".join(lines) + "\n", encoding="utf-8")
