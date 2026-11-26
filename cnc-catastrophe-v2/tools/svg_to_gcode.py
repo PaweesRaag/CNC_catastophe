@@ -104,7 +104,7 @@ def convert(input_svg: Path, output_gcode: Path, workspace_x: float,
 
         start_x, start_y = points[0]
         lines.extend(["M5", f"G0 X{start_x:.3f} Y{start_y:.3f}", "M3"])
-        for x, y in points[1:]:
+        for x, y in points:
             if not (0 <= x <= workspace_x and 0 <= y <= workspace_y):
                 raise ValueError("Transformed path exceeds configured workspace")
             lines.append(f"G1 X{x:.3f} Y{y:.3f} F{feed:.1f}")
