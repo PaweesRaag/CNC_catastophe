@@ -26,13 +26,15 @@ Resolution calculation: 200 x 16 / 8 = 400 steps/mm. This assumes identical moto
 - tools/cnc_sender.py - stop-and-wait serial sender
 - examples/test_square.svg - example drawing
 - docs/ARCHITECTURE.md - system architecture and data flow
+- docs/BOM.md - hardware bill of materials and configuration record
+- docs/WINDOWS_SETUP.md - Windows installation and operation guide
 - docs/HARDWARE.md - wiring and safety notes
 - docs/CALIBRATION.md - commissioning and calibration procedure
 - docs/PROTOCOL.md - supported serial commands
 - docs/VALIDATION.md - software, firmware and hardware test plan
 - docs/TROUBLESHOOTING.md - common faults and recovery
 - docs/PROJECT_WALKTHROUGH.md - technical explanation and interview preparation
-- tests/test_svg_to_gcode.py - converter regression tests
+- tests/test_svg_to_gcode.py and tests/test_cnc_sender.py - host-side regression tests
 
 ## Setup
 
@@ -59,7 +61,7 @@ GitHub Actions also checks the Python tools/tests and compiles the sketch for Ar
 
 ## Documentation
 
-See the [architecture](docs/ARCHITECTURE.md), [hardware](docs/HARDWARE.md), [calibration](docs/CALIBRATION.md), [protocol](docs/PROTOCOL.md), [validation](docs/VALIDATION.md), [troubleshooting](docs/TROUBLESHOOTING.md) and [project walkthrough](docs/PROJECT_WALKTHROUGH.md).
+See the [architecture](docs/ARCHITECTURE.md), [BOM](docs/BOM.md), [Windows setup](docs/WINDOWS_SETUP.md), [hardware](docs/HARDWARE.md), [calibration](docs/CALIBRATION.md), [protocol](docs/PROTOCOL.md), [validation](docs/VALIDATION.md), [troubleshooting](docs/TROUBLESHOOTING.md) and [project walkthrough](docs/PROJECT_WALKTHROUGH.md).
 
 ## Supported commands
 
