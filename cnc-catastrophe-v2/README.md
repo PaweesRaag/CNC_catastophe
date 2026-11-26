@@ -1,11 +1,11 @@
 # CNC Catastrophe
 
-[![Python checks](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml?query=branch%3Acnc-catastrophe-v2) [![Arduino build](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml/badge.svg?branch=cnc-catastrophe-v2)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml?query=branch%3Acnc-catastrophe-v2)
+[![Python checks](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml/badge.svg?branch=main)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/python-checks.yml?query=branch%3Amain) [![Arduino build](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml/badge.svg?branch=main)](https://github.com/PaweesRaag/CNC_catastophe/actions/workflows/arduino-build.yml?query=branch%3Amain)
 
 
 Two-axis lead-screw pen-plotter prototype for Arduino Uno, two NEMA 17 motors, two DRV8825 drivers, normally-closed home switches and a pen-lift servo.
 
-> Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes five Python converter tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
+> Development snapshot. GitHub Actions successfully compiles the firmware for Arduino Uno and passes eight Python tests. The firmware has not been tested on the physical machine; motion, travel, current and safety behaviour remain unvalidated.
 
 ## Configured machine
 
@@ -80,7 +80,7 @@ This is not a full RS-274 interpreter. Arcs, relative positioning, offsets, tool
 
 ## Known limitations and safety
 
-- Firmware has not been compiled or physically tested.
+- Firmware compiles for Arduino Uno in GitHub Actions; it has not been tested on the physical machine.
 - Homing assumes NC switches to GND: healthy/unpressed reads LOW; open/actuated/broken wire reads HIGH.
 - Only negative-end home switches are represented. Positive travel is limited in software, not by independent far-end switches.
 - D11 is a software-monitored NC E-stop input. A real E-stop must independently interrupt driver power or driver enable through appropriately rated hardware. Never rely on USB or firmware as the only emergency stop.
